@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   useForm,
   FormProvider,
@@ -30,7 +30,7 @@ const defaultValues: DefaultValues<IRegistrationForm> = {
 
 const RegistrationForm = () => {
   const formMethods = useForm<IRegistrationForm>({
-    mode: "onTouched",
+    mode: "all",
     resolver: yupResolver(registrationValidationSchema),
     defaultValues,
   });
@@ -46,6 +46,7 @@ const RegistrationForm = () => {
       setLoading(false);
       console.log(JSON.stringify(data));
       setSucceded(true);
+      reset(defaultValues);
     }, 2000);
 
     setTimeout(() => {
@@ -53,12 +54,8 @@ const RegistrationForm = () => {
     }, 10000);
   };
 
-  useEffect(() => {
-    reset(defaultValues);
-  }, [formState.isSubmitSuccessful, reset]);
-
   return (
-    <StyledFormWrapper elevation={2}>
+    <StyledFormWrapper elevation={0}>
       <Typography variant="h1">Регистрация</Typography>
 
       <StyledProgressWrapper>

@@ -11,8 +11,8 @@ export const registrationValidationSchema = Yup.object().shape({
     .max(100, "Введите не более 100 символов"),
   date_of_birth: Yup.date()
     .nullable(true)
-    .required("Пожалуйста, укажите дату")
-    .typeError("Введите корректную дату"),
+    .required("Пожалуйста, укажите дату рождения")
+    .typeError("Введите корректную дату (дд.мм.гггг)"),
   city: Yup.string()
     .required("Пожалуйста, укажите название города")
     .min(2, "Введите не менее 2 символов")
