@@ -69,6 +69,7 @@ const RegistrationForm = () => {
             inputName="name"
             patternCanInputChar={/[^A-Za-zА-Яа-я\s$]/g}
             isCapitalizeFirstChar
+            autoFocus
           />
           <ControllerTextField
             inputLabel="Фамилия"
