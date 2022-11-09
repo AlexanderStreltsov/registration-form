@@ -1,14 +1,14 @@
 import React, { Fragment } from "react";
 import GlobalStyle from "../../theme/global-styles";
 import PageWrapper from "../page-wrapper";
-import Form from "../form";
+import RegistrationForm from "../registration-form";
 
 const App = () => {
   return (
     <Fragment>
       <GlobalStyle />
       <PageWrapper>
-        <Form />
+        <RegistrationForm />
       </PageWrapper>
     </Fragment>
   );

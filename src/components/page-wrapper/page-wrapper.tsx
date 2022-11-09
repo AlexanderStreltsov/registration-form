@@ -1,10 +1,9 @@
 import React, { FC, PropsWithChildren } from "react";
 import styled from "styled-components";
+import { device } from "../../theme/device";
 
 const StyledPageWrapper = styled.main`
-  width: 1280px;
-  height: 100vh;
-  margin: 0 auto;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,6 +14,14 @@ const StyledPageWrapper = styled.main`
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+
+  @media ${device.mobileS} {
+    height: auto;
+  }
+
+  @media ${device.tablet} {
+    height: 100vh;
+  }
 `;
 
 const PageWrapper: FC<PropsWithChildren> = ({ children }) => (
