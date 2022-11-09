@@ -10,6 +10,7 @@ export const StyledFormWrapper = styled(Paper)`
   gap: 12px;
 
   @media ${device.mobileS} {
+    min-height: 100vh;
     max-width: 450px;
     padding: 50px 20px 40px;
     border-top-left-radius: 0 !important;
@@ -19,6 +20,7 @@ export const StyledFormWrapper = styled(Paper)`
   }
 
   @media ${device.mobileL} {
+    min-height: auto;
     padding: 50px 60px 60px;
     border-radius: 8px !important;
   }
