@@ -54,6 +54,8 @@ const RegistrationForm = () => {
     }, 10000);
   };
 
+  const isAutoFocus = window.innerWidth > 1280;
+
   return (
     <StyledFormWrapper elevation={0}>
       <Typography variant="h1">Регистрация</Typography>
@@ -69,6 +71,7 @@ const RegistrationForm = () => {
             inputName="name"
             patternCanInputChar={/[^A-Za-zА-Яа-я\s$]/g}
             isCapitalizeFirstChar
+            isAutoFocus={isAutoFocus}
           />
           <ControllerTextField
             inputLabel="Фамилия"

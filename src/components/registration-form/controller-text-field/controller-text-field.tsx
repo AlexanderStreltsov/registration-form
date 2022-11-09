@@ -8,6 +8,7 @@ interface IControllerTextFieldProps {
   patternCanInputChar?: RegExp;
   limitChars?: number;
   isCapitalizeFirstChar?: boolean;
+  isAutoFocus?: boolean;
 }
 
 const ControllerTextField: FC<IControllerTextFieldProps> = ({
@@ -16,6 +17,7 @@ const ControllerTextField: FC<IControllerTextFieldProps> = ({
   patternCanInputChar,
   limitChars,
   isCapitalizeFirstChar,
+  isAutoFocus,
 }) => {
   const { control } = useFormContext();
 
@@ -69,6 +71,7 @@ const ControllerTextField: FC<IControllerTextFieldProps> = ({
           error={invalid}
           helperText={error?.message as string}
           variant="standard"
+          autoFocus={isAutoFocus}
           {...restField}
         />
       )}
