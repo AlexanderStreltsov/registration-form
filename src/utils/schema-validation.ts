@@ -1,12 +1,8 @@
 import * as Yup from "yup";
 
 export const registrationValidationSchema = Yup.object().shape({
-  name: Yup.string()
-    .required("Пожалуйста, укажите имя")
-    .min(2, "Введите не менее 2 символов")
-    .max(100, "Введите не более 100 символов"),
-  surname: Yup.string()
-    .required("Пожалуйста, укажите фамилию")
+  surname_and_name: Yup.string()
+    .required("Пожалуйста, укажите фамилию и имя")
     .min(2, "Введите не менее 2 символов")
     .max(100, "Введите не более 100 символов"),
   date_of_birth: Yup.date()

@@ -21,8 +21,7 @@ import {
 } from "./styled";
 
 const defaultValues: DefaultValues<IRegistrationForm> = {
-  name: "",
-  surname: "",
+  surname_and_name: "",
   date_of_birth: null,
   city: "",
   phone_number: "",
@@ -67,17 +66,11 @@ const RegistrationForm = () => {
       <FormProvider {...formMethods}>
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
           <ControllerTextField
-            inputLabel="Имя"
-            inputName="name"
-            patternCanInputChar={/[^A-Za-zА-Яа-я\s$]/g}
-            isCapitalizeFirstChar
+            inputLabel="Фамилия и имя"
+            inputName="surname_and_name"
+            patternCanInputChar={/[^A-Za-zА-Яа-я\s]/g}
+            isCapitalize
             isAutoFocus={isAutoFocus}
-          />
-          <ControllerTextField
-            inputLabel="Фамилия"
-            inputName="surname"
-            patternCanInputChar={/[^A-Za-zА-Яа-я\s$]/g}
-            isCapitalizeFirstChar
           />
           <ControllerDatePickerField
             inputLabel="Дата рождения"
@@ -86,13 +79,13 @@ const RegistrationForm = () => {
           <ControllerTextField
             inputLabel="Город"
             inputName="city"
-            patternCanInputChar={/[^A-Za-zА-Яа-я\s-$]/g}
-            isCapitalizeFirstChar
+            patternCanInputChar={/[^A-Za-zА-Яа-я\s-]/g}
+            isCapitalize
           />
           <ControllerTextField
             inputLabel="Телефон"
             inputName="phone_number"
-            patternCanInputChar={/[^\d{11}$]/g}
+            patternCanInputChar={/[^\d{11}]/g}
             limitChars={11}
           />
           <StyledButton

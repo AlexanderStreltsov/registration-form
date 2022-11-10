@@ -7,7 +7,7 @@ interface IControllerTextFieldProps {
   inputName: string;
   patternCanInputChar?: RegExp;
   limitChars?: number;
-  isCapitalizeFirstChar?: boolean;
+  isCapitalize?: boolean;
   isAutoFocus?: boolean;
 }
 
@@ -16,7 +16,7 @@ const ControllerTextField: FC<IControllerTextFieldProps> = ({
   inputName,
   patternCanInputChar,
   limitChars,
-  isCapitalizeFirstChar,
+  isCapitalize,
   isAutoFocus,
 }) => {
   const { control } = useFormContext();
@@ -25,12 +25,12 @@ const ControllerTextField: FC<IControllerTextFieldProps> = ({
     value: string,
     patternCanInputChar: RegExp | undefined,
     limitChars: number | undefined,
-    isCapitalizeFirstChar: boolean | undefined
+    isCapitalize: boolean | undefined
   ) => {
     let newValue = value;
 
     if (patternCanInputChar) {
-      newValue = value.replace(patternCanInputChar, "");
+      newValue = value.trimStart().replace(patternCanInputChar, "");
     }
 
     if (limitChars) {
@@ -38,8 +38,11 @@ const ControllerTextField: FC<IControllerTextFieldProps> = ({
         newValue.length > limitChars ? newValue.slice(0, limitChars) : newValue;
     }
 
-    if (isCapitalizeFirstChar && newValue) {
-      newValue = newValue[0].toUpperCase() + newValue.slice(1);
+    if (isCapitalize && newValue) {
+      newValue = newValue
+        .split(" ")
+        .map((word) => (word ? word[0].toUpperCase() + word.slice(1) : ""))
+        .join(" ");
     }
 
     return newValue;
@@ -57,14 +60,14 @@ const ControllerTextField: FC<IControllerTextFieldProps> = ({
             value,
             patternCanInputChar,
             limitChars,
-            isCapitalizeFirstChar
+            isCapitalize
           )}
           onChange={(evt) => {
             evt.target.value = checkValidCharacters(
               evt.target.value,
               patternCanInputChar,
               limitChars,
-              isCapitalizeFirstChar
+              isCapitalize
             );
             onChange(evt);
           }}
